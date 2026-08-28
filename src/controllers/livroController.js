@@ -1,7 +1,9 @@
+const livroService = require("../services/livroService");
+
 function listar(req, res) {
-    res.json({
-        mensagem: "Lista de livros"
-    });
+    const livros = livroService.listar();
+
+    res.json(livros);
 }
 
 module.exports = {
