@@ -1,11 +1,8 @@
 const express = require("express");
+const livroController = require("../controllers/livroController");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    res.json({
-        mensagem: "Lista de livros"
-    });
-});
+router.get("/", livroController.listar);
 
 module.exports = router;
