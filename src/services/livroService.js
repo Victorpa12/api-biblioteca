@@ -1,14 +1,9 @@
-function listar() {
-    return [
-        {
-            id: 1,
-            titulo: "O Hobbit"
-        },
-        {
-            id: 2,
-            titulo: "Harry Potter e a Pedra Filosofal"
-        }
-    ];
+const pool = require("../database/connection");
+
+async function listar() {
+    const resultado = await pool.query("SELECT * FROM livros");
+
+    return resultado.rows;
 }
 
 module.exports = {

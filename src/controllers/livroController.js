@@ -1,7 +1,7 @@
 const livroService = require("../services/livroService");
 
-function listar(req, res) {
-    const livros = livroService.listar();
+async function listar(req, res) {
+    const livros = await livroService.listar();
 
     res.json(livros);
 }
