@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Victorpa12/api-biblioteca#readme",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "pg": "^8.23.0"
   }
 }
