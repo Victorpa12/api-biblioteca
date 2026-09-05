@@ -6,6 +6,16 @@ async function listar() {
     return resultado.rows;
 }
 
+async function criar(titulo) {
+    const resultado = await pool.query(
+        "INSERT INTO livros (titulo) VALUES ($1) RETURNING *",
+        [titulo]
+    );
+
+    return resultado.rows[0];
+}
+
 module.exports = {
-    listar
+    listar,
+    criar
 };
