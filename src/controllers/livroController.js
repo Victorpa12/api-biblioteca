@@ -14,7 +14,22 @@ async function criar(req, res) {
     res.status(201).json(livro);
 }
 
+async function buscarPorId(req, res) {
+    const { id } = req.params;
+
+    const livro = await livroService.buscarPorId(id);
+
+    if (!livro) {
+        return res.status(404).json({
+            mensagem: "Livro não encontrado"
+        });
+    }
+
+    res.json(livro);
+}
+
 module.exports = {
     listar,
-    criar
+    criar,
+    buscarPorId
 };

@@ -15,7 +15,17 @@ async function criar(titulo) {
     return resultado.rows[0];
 }
 
+async function buscarPorId(id) {
+    const resultado = await pool.query(
+        "SELECT * FROM livros WHERE id = $1",
+        [id]
+    );
+
+    return resultado.rows[0];
+}
+
 module.exports = {
     listar,
-    criar
+    criar,
+    buscarPorId
 };
