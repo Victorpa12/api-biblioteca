@@ -7,6 +7,8 @@ const router = express.Router();
 
 router.get("/", livroController.listar);
 
+router.get("/:id", livroController.buscarPorId);
+
 router.post(
     "/",
     validate(criarLivroSchema),
