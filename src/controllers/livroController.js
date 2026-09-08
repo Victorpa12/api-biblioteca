@@ -28,8 +28,24 @@ async function buscarPorId(req, res) {
     res.json(livro);
 }
 
+async function atualizar(req, res){
+    const { id } = req.params;
+    const { titulo } = req.body;
+
+    const livro = await livroService.atualizar(id, titulo);
+
+    if (!livro) {
+        return res.status(404).json({
+            mensagem: "Livro não encontrado"
+        });
+    }
+
+    res.json(livro);
+}
+
 module.exports = {
     listar,
     criar,
-    buscarPorId
+    buscarPorId,
+    atualizar
 };

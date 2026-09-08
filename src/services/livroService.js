@@ -24,8 +24,18 @@ async function buscarPorId(id) {
     return resultado.rows[0];
 }
 
+async function atualizar(id, titulo) {
+    const resultado = await pool.query(
+        "UPDATE livros SET titulo = $1 WHERE id = $2 RETURNING *",
+        [titulo, id]
+    );
+
+    return resultado.rows[0];
+}
+
 module.exports = {
     listar,
     criar,
-    buscarPorId
+    buscarPorId,
+    atualizar
 };

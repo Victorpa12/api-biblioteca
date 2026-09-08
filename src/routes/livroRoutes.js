@@ -1,7 +1,7 @@
 const express = require("express");
 const livroController = require("../controllers/livroController");
 const validate = require("../middlewares/validate");
-const { criarLivroSchema } = require("../schemas/livroSchema");
+const { criarLivroSchema, atualizarLivroSchema } = require("../schemas/livroSchema");
 
 const router = express.Router();
 
@@ -13,6 +13,12 @@ router.post(
     "/",
     validate(criarLivroSchema),
     livroController.criar
+);
+
+router.put(
+    "/:id",
+    validate(atualizarLivroSchema),
+    livroController.atualizar
 );
 
 module.exports = router;
