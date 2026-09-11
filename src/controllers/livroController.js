@@ -43,9 +43,27 @@ async function atualizar(req, res){
     res.json(livro);
 }
 
+async function excluir(req, res) {
+    const { id } = req.params;
+
+    const livro = await livroService.excluir(id);
+
+    if (!livro) {
+        return res.status(404).json({
+            mensagem: "Livro não encontrado"
+        });
+    }
+
+    res.json({
+        mensagem: "Livro excluído com sucesso",
+        livro
+    });
+}
+
 module.exports = {
     listar,
     criar,
     buscarPorId,
-    atualizar
+    atualizar,
+    excluir
 };

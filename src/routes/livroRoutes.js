@@ -1,7 +1,10 @@
 const express = require("express");
 const livroController = require("../controllers/livroController");
 const validate = require("../middlewares/validate");
-const { criarLivroSchema, atualizarLivroSchema } = require("../schemas/livroSchema");
+const {
+    criarLivroSchema,
+    atualizarLivroSchema
+} = require("../schemas/livroSchema");
 
 const router = express.Router();
 
@@ -20,5 +23,7 @@ router.put(
     validate(atualizarLivroSchema),
     livroController.atualizar
 );
+
+router.delete("/:id", livroController.excluir);
 
 module.exports = router;
